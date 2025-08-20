@@ -33,37 +33,34 @@
             $num2 = $num2_input;
         } else {
             // Convert to float for calculations
-            $num1 = (float)$num1_input;
-            $num2 = (float)$num2_input;
+            $num1_float = (float)$num1_input;
+            $num2_float = (float)$num2_input;
 
-            // Perform calculation based on operator
-            switch ($operator) {
-                case '+':
-                    $result = $num1 + $num2;
-                    break;
-                case '-':
-                    $result = $num1 - $num2;
-                    break;
-                case '*':
-                    $result = $num1 * $num2;
-                    break;
-                case '/':
-                    // Handle division by zero
-                    if ($num2 != 0) {
-                        $result = $num1 / $num2;
-                    } else {
-                        $error = "Cannot divide by zero!";
-                    }
-                    break;
-                default:
-                    $error = "Invalid operator selected.";
-                    break;
+            // Perform calculation using if-else if structure
+            if ($operator == '+') {
+                $result = $num1_float + $num2_float;
+            } elseif ($operator == '-') {
+                $result = $num1_float - $num2_float;
+            } elseif ($operator == '*') {
+                $result = $num1_float * $num2_float;
+            } elseif ($operator == '/') {
+                if ($num2_float != 0) {
+                    $result = $num1_float / $num2_float;
+                } else {
+                    $error = "Cannot divide by zero!";
+                }
+            } else {
+                $error = "Invalid operator selected.";
             }
 
             // If the calculation was successful and no error occurred, clear the input fields
             if (!$error) {
                 $num1 = ''; // Clear the first number input
                 $num2 = ''; // Clear the second number input
+            } else {
+                // If there was an error during calculation (e.g., division by zero), retain inputs
+                $num1 = $num1_input;
+                $num2 = $num2_input;
             }
         }
     }

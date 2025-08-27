@@ -1,8 +1,6 @@
 <?php
-// activity.php - A script to demonstrate basic string and array manipulations in PHP.
 
 echo "<h1>PHP Activity</h1>";
-
 
 echo '
 <form method="GET" action="activity.php">
@@ -17,18 +15,13 @@ echo '
 <hr>
 ';
 
-
 echo "<h2>Part 1: String Manipulation</h2>";
-
 
 $input_string = " asdasidjisadoa ";
 
-
 if (isset($_GET['input'])) {
-   
     $input_string = htmlspecialchars($_GET['input']);
 }
-
 
 echo "Original: " . $input_string . "<br>";
 echo "Uppercase: " . strtoupper($input_string) . "<br>";
@@ -37,27 +30,18 @@ echo "Ucfirst: " . ucfirst($input_string) . "<br>";
 echo "Ucwords: " . ucwords($input_string) . "<br>";
 echo "Trimmed: " . trim($input_string) . "<br>";
 
-
 echo "<h2>Part 2: Arrays</h2>";
 
-$fruits = [];
-
+$fruits = ["apple", "banana"];
 
 if (isset($_GET['new_fruit']) && !empty($_GET['new_fruit'])) {
-    
     array_push($fruits, htmlspecialchars($_GET['new_fruit']));
 }
 
-
 echo "Array contents:<br>";
-if (!empty($fruits)) {
-    foreach ($fruits as $fruit) {
-        echo $fruit . "<br>";
-    }
-} else {
-    echo "No fruits added yet.<br>";
+foreach ($fruits as $fruit) {
+    echo $fruit . "<br>";
 }
-
 
 echo "Array size: " . count($fruits) . "<br>";
 
